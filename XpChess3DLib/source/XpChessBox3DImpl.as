@@ -57,8 +57,8 @@ private var _xpChessView: IXpChessView = //new XpChessViewA3D5();			//bad: slowe
 										//new XpChessViewRotatePV3D();		//bad: faces missing and crash when mouse interacting
 										//new XpChessViewRotateAway3D3();	//bad: little faces missing and no localPosition of MouseEvent3D
 										//new XpChessViewRotateA3D8();		//bad: some plane meshes missing
-										//new XpChessViewRotateA3D7();		//good: no faces missing and fastest flash3d !!!
-										new XpChessViewRotateAway3D4();		//good: stage3d !!!
+										new XpChessViewRotateA3D7();		//good: no faces missing and fastest flash3d !!!
+										//new XpChessViewRotateAway3D4();		//good: stage3d !!!
 
 private var _autoResize: Boolean = true;
 
