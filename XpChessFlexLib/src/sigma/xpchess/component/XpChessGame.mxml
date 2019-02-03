@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx" width="100%" height="100%" 
+		 xmlns:component="sigma.xpchess.component.*" 
+		 creationComplete="initXpChessBox()"
+		 addedToStage="init()">
+	<fx:Declarations>
+		<!-- 将非可视元素（例如服务、值对象）放在此处 -->
+	</fx:Declarations>
+	<fx:Script>
+		<![CDATA[
+			import mx.collections.ArrayList;
+			import mx.core.IVisualElement;
+			import mx.core.UIComponent;
+			
+			import sigma.xpchess.define.IXpChessBox;
+			
+			private var _xpchess: IXpChessBox = null;
+			private var _view3d: Boolean = false;
+			private var _autoRotate: Boolean = true;
+			
+			public function get stage3d(): Boolean
+			{
+				return _xpchess && _xpchess.stage3d;
+			}
+			
+			public function set view3d(value: Boolean): void
+			{
+				if (_xpchess)
+					_xpchess.view3d = _autoRotate = value;
+				else
+					_view3d = value;
+			}
+			
+			public function get view3d(): Boolean
+			{
+				return _view3d;
+			}
+			
+			public function set autoRotate(value: Boolean): void
+			{
+				if (_xpchess)
+					_xpchess.autoRotate = _autoRotate = value;
+				else
+					_autoRotate = value;
+			}
+			
+			public function get autoRotate(): Boolean
+			{
+				return _autoRotate;
+			}
+			
+			//--------------------------------------------------
+			protected function createXpChessBox(): IXpChessBox
+			{
+//				return new XpChessBox1();
+				return new XpChessBox2();
+			}
+			
+			private function initXpChessBox(): void
+			{
+				_xpchess = createXpChessBox();
+				this.addElement(_xpchess);
+				
+				_xpchess.view3d = _view3d;
+				_xpchess.gameType = 2;
+				_xpchess.autoResize = true;
+				_xpchess.autoRotate = _autoRotate;
+			}
+			
+			public function get xpChessBox(): UIComponent
+			{
+				return _xpchess as UIComponent;
+			}
+			
+			private function init(): void
+			{
+				choices.dataProvider = new ArrayList(gameTypes);
+				chooseGameType(_xpchess.gameType);
+				holdFocus();
+			}
+			
+			//--------------------------------------------------
+			private var gameTypes: Array = [2, 3, 4];
+			
+			private function onChoosingGameType(): void
+			{
+				chooseGameType(gameTypes[choices.selectedIndex]);
+			}
+			
+			private function chooseGameType(type: int): void
+			{
+				if (_xpchess.gameType != type)
+				{
+					_xpchess.gameType = type;
+					initAutoRotator();
+					rotator.snapInterval = Math.PI / type;
+					rotator.stepSize = Math.PI / type;
+//					rotator.tickInterval = Math.PI / type;
+				}
+			}
+			
+			//--------------------------------------------------
+			private var AutoRotateValue: Number = NaN;
+			
+			private function initAutoRotator(): void
+			{
+				rotator.value = AutoRotateValue = rotator.maximum;
+				checkAutoRotate();
+			}
+			
+			private function checkAutoRotate(): void
+			{
+				_xpchess.autoRotate = (rotator.value == AutoRotateValue);
+				_xpchess.boardRotation = rotator.value;
+			}
+			
+			//--------------------------------------------------
+			public function set showController(value: Boolean): void
+			{
+				var layout: VerticalLayout = VerticalLayout(this.layout);
+				if (value)
+				{
+					if (!containElement(choices))
+						this.addElementAt(choices, 0);
+					
+					if (!containElement(rotator))
+						this.addElementAt(rotator, 1);
+					
+					layout.gap = layout.paddingTop = 5;
+					layout.paddingBottom = 0;
+				}
+				else
+				{
+					if (containElement(choices))
+						this.removeElement(choices);
+					
+					if (containElement(rotator))
+						this.removeElement(rotator);
+					
+					layout.gap = layout.paddingTop = layout.paddingBottom = 0;
+				}
+			}
+
+			private function containElement(element: IVisualElement): Boolean
+			{
+				try
+				{
+					this.getElementIndex(element);
+				}
+				catch (e: Error)
+				{
+					return false;
+				}
+				return true;
+			}
+			
+			//--------------------------------------------------
+			private function holdFocus(): void
+			{
+				this.addEventListener(Event.RENDER, checkFocus);
+			}
+			
+			private function checkFocus(e: Event): void
+			{
+				this.setFocus();
+			}
+			
+			//--------------------------------------------------
+			override protected function updateDisplayList(unscaledWidth:Number, unscaledHeight:Number):void
+			{
+				super.updateDisplayList(unscaledWidth, unscaledHeight);
+				
+				this.graphics.clear();
+				if (this.stage3d && this.xpChessBox)
+				{
+					this.graphics.beginFill(0x000000);
+					this.graphics.drawRect(0, 0, unscaledWidth, this.xpChessBox.y);
+					this.graphics.endFill();
+				}
+			}
+		]]>
+	</fx:Script>
+	<s:layout>
+		<s:VerticalLayout horizontalAlign="center" gap="15" paddingTop="5" paddingBottom="15"/>
+	</s:layout>
+	<s:ButtonBar id="choices" change="onChoosingGameType()" requireSelection="true"/>
+	<s:HSlider id="rotator" width="{choices.width}" minimum="0" maximum="{Math.PI * 2}" 
+			   change="checkAutoRotate()"/>
+</s:Group>

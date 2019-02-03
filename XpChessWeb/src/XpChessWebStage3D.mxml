@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" 
+			   xmlns:s="library://ns.adobe.com/flex/spark" 
+			   xmlns:mx="library://ns.adobe.com/flex/mx" minWidth="955" minHeight="600" 
+			   xmlns:component="sigma.xpchess.component.*" 
+			   creationComplete="init()" addedToStage="this.isTransparent = true;">
+	<fx:Declarations>
+		<!-- 将非可视元素（例如服务、值对象）放在此处 -->
+	</fx:Declarations>
+	<fx:Script source="XpChessWebImpl.as"/>
+	<s:layout>
+		<s:VerticalLayout verticalAlign="middle" paddingBottom="5"/>
+	</s:layout>
+	<component:XpChessGame3D/>
+	<s:Label id="statusText" width="100%" bottom="0"/>
+</s:Application>

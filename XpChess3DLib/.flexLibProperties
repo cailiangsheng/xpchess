@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<flexLibProperties includeAllClasses="false" useMultiPlatformConfig="false" version="3">
+  <includeClasses>
+    <classEntry path="sigma.xpchess.component.XpChessBox3D"/>
+    <classEntry path="sigma.xpchess.component.XpChessGame3D"/>
+    <classEntry path="sigma.xpchess.implement.pv3d.ChessBoardPV3D"/>
+    <classEntry path="sigma.xpchess.implement.pv3d.ChessManPV3D"/>
+    <classEntry path="sigma.xpchess.implement.pv3d.ViewportPV3D"/>
+  </includeClasses>
+  <includeResources/>
+  <namespaceManifests/>
+</flexLibProperties>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<flexLibProperties includeAllClasses="false" useMultiPlatformConfig="false" version="3">
+  <includeClasses>
+    <classEntry path="sigma.display.Display3DHelper"/>
+    <classEntry path="sigma.xpchess.component.XpChessBox2"/>
+    <classEntry path="sigma.xpchess.component.XpChessGame"/>
+    <classEntry path="sigma.xpchess.define.IXpChessBox"/>
+    <classEntry path="sigma.xpchess.define.IXpChessContent"/>
+    <classEntry path="sigma.xpchess.define.IXpChessController"/>
+    <classEntry path="sigma.xpchess.define.IXpChessHandler"/>
+    <classEntry path="sigma.xpchess.define.IXpChessModel"/>
+    <classEntry path="sigma.xpchess.define.IXpChessView"/>
+    <classEntry path="sigma.xpchess.effect.IRotateTarget"/>
+    <classEntry path="sigma.xpchess.effect.Rotate"/>
+    <classEntry path="sigma.xpchess.event.XpChessBoardEvent"/>
+    <classEntry path="sigma.xpchess.event.XpChessErrorEvent"/>
+    <classEntry path="sigma.xpchess.event.XpChessGameEvent"/>
+    <classEntry path="sigma.xpchess.event.XpChessMoveEvent"/>
+    <classEntry path="sigma.xpchess.implement.stage2d.ChessBoard"/>
+    <classEntry path="sigma.xpchess.implement.common.XpChessController"/>
+    <classEntry path="sigma.xpchess.implement.common.XpChessModel"/>
+    <classEntry path="sigma.xpchess.implement.stage2d.XpChessView"/>
+    <classEntry path="sigma.xpchess.implement.common.XpChessViewHelper"/>
+    <classEntry path="sigma.xpchess.implement.stage2d.XpChessViewRotate"/>
+    <classEntry path="sigma.xpchess.util.ChessBoardPool"/>
+    <classEntry path="sigma.xpchess.util.ChessBoardUtil"/>
+    <classEntry path="sigma.xpchess.util.ChessMan"/>
+    <classEntry path="sigma.xpchess.util.ChessManData"/>
+    <classEntry path="sigma.xpchess.util.ChessManPool"/>
+    <classEntry path="sigma.xpchess.util.ChessManPos"/>
+    <classEntry path="sigma.xpchess.util.ChessManUtil"/>
+    <classEntry path="sigma.xpchess.xpchess_internal"/>
+    <classEntry path="sigma.xpchess.implement.common.XpChessViewRotateBase"/>
+    <classEntry path="sigma.xpchess.implement.common.ChessPool"/>
+    <classEntry path="sigma.xpchess.implement.common.XpChessViewBase"/>
+    <classEntry path="sigma.xpchess.implement.common.IViewport"/>
+    <classEntry path="sigma.xpchess.implement.common.IChessBoard"/>
+    <classEntry path="sigma.xpchess.implement.common.IChessMan"/>
+    <classEntry path="sigma.xpchess.implement.common.ViewTransformerBase"/>
+    <classEntry path="sigma.xpchess.implement.stage2d.ViewportStage2D"/>
+    <classEntry path="sigma.xpchess.implement.stage2d.ViewTransformer"/>
+  </includeClasses>
+  <includeResources/>
+  <namespaceManifests/>
+</flexLibProperties>
