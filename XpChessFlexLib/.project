@@ -41,11 +41,4 @@
 		<nature>org.eclipse.cdt.managedbuilder.core.managedBuildNature</nature>
 		<nature>org.eclipse.cdt.managedbuilder.core.ScannerConfigNature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>XpChessCppLib</name>
-			<type>2</type>
-			<location>/Applications/Adobe Flash Builder 4.7/Adobe Flash Builder 4.7.app/Contents/MacOS/C::/Applications/Adobe Flash Builder 4.7/Adobe Flash Builder 4.7.app/Contents/MacOS/C::/home/sigma/projects/xpchess/XpChessCppLib/src</location>
-		</link>
-	</linkedResources>
 </projectDescription>
